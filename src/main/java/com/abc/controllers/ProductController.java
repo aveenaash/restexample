@@ -2,9 +2,11 @@ package com.abc.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.dtos.ProductDto;
+import com.abc.utils.InMemoryDatabase;
 
 @RestController
 @RequestMapping("/product")
@@ -19,6 +21,12 @@ public class ProductController {
 		pd.setDescription("this is laterst iphone");
 		
 		return pd;
+	}
+	
+	@GetMapping(value="")
+	public ProductDto getProductById(@RequestParam(value="id", required = true) Integer productId) {
+		return InMemoryDatabase.productList.get(productId);
+		
 	}
 
 }
