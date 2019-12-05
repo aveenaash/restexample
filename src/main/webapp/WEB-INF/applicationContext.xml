@@ -13,6 +13,10 @@
 		<property name="productService" ref="productService" />
 	</bean>
 
+	<bean class="com.abc.controllers.FlightController"
+		id="flightController">
+	</bean>
+
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean
