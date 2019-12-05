@@ -1,6 +1,7 @@
 package com.abc.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +16,7 @@ public class ProductController {
 
 	private ProductService productService;
 
-	@GetMapping(value = "/get")
+	@GetMapping(value = "/demo")
 	public ProductDto getProduct() {
 		System.out.println("i am inside get product");
 		ProductDto pd = new ProductDto();
@@ -31,6 +32,14 @@ public class ProductController {
 		return productService.getProductById(productId);
 
 	}
+	
+	
+	@GetMapping(value = "/{id}/details")
+	public ProductDto getProductByIdAgain(@PathVariable(value = "id") Integer productId) {
+		return productService.getProductById(productId);
+
+	}
+	
 
 	public ProductService getProductService() {
 		return productService;
