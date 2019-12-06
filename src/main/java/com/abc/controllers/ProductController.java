@@ -2,6 +2,7 @@ package com.abc.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +19,10 @@ import com.abc.utils.InMemoryDatabase;
 @RequestMapping("/product")
 public class ProductController {
 
+	@Autowired
 	private ProductService productService;
-
+	
+	
 	@GetMapping(value = "/demo")
 	public ProductDto getProduct() {
 		System.out.println("i am inside get product");
@@ -36,35 +39,23 @@ public class ProductController {
 		return productService.getProductById(productId);
 
 	}
-	
+
 	@GetMapping(value = "/all")
 	public List<ProductDto> getAllProducts() {
 		return productService.getProducts();
 
 	}
-	
+
 	@PostMapping(value = "")
 	public void createProduct(@RequestBody ProductDto pd) {
-		//productService.createProduct(pd);
+		// productService.createProduct(pd);
 		System.out.println(pd.toString());
 	}
-	
-	
+
 	@GetMapping(value = "/{id}/details")
 	public ProductDto getProductByIdAgain(@PathVariable(value = "id") Integer productId) {
 		return productService.getProductById(productId);
 
-	}
-	
-	
-	
-
-	public ProductService getProductService() {
-		return productService;
-	}
-
-	public void setProductService(ProductService productService) {
-		this.productService = productService;
 	}
 
 }

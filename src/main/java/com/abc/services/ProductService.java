@@ -3,9 +3,13 @@ package com.abc.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.abc.dtos.ProductDto;
 import com.abc.utils.InMemoryDatabase;
 
+@Service
 public class ProductService {
 	
 	public ProductDto getProductById(Integer id) {
